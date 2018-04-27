@@ -6,15 +6,15 @@ import Webcam from 'react-webcam';
 import Button from 'preact-material-components/Button';
 import 'preact-material-components/Button/style.css';
 
-class Home extends Component {
+class CameraPage extends Component {
   capture = () => { 
     const image = this.webcam.getScreenshot(); 
     this.props.getResults(image);
-    route("/results");
+    route("/list");
   } 
   render() {
     return (
-      <div id="home">
+      <div id="camera">
         <h1>Take a picture to analyse...</h1>
         <Webcam audio={false} ref={webcam => { this.webcam = webcam; }} screenshotFormat="image/jpeg" />
         <Button unelevated={true} onClick={this.capture}>Take picture</Button>
@@ -23,4 +23,4 @@ class Home extends Component {
   }
 }
 
-export default connect(mapToProps, actions)(Home);
+export default connect(mapToProps, actions)(CameraPage);
