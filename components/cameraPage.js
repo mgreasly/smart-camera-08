@@ -3,8 +3,8 @@ import { route } from 'preact-router';
 import { connect } from 'redux-zero/preact';
 import {mapToProps, actions} from './store';
 import Webcam from 'react-webcam';
-import Button from 'preact-material-components/Button';
-import 'preact-material-components/Button/style.css';
+import Fab from 'preact-material-components-mgr/Fab';
+import 'preact-material-components-mgr/Fab/style.css';
 
 class CameraPage extends Component {
   capture = () => { 
@@ -12,12 +12,19 @@ class CameraPage extends Component {
     this.props.getResults(image);
     route("/list");
   } 
+
   render() {
     return (
-      <div id="camera">
+      <div class="camera-page">
         <h1>Take a picture to analyse...</h1>
-        <Webcam audio={false} ref={webcam => { this.webcam = webcam; }} screenshotFormat="image/jpeg" />
-        <Button unelevated={true} onClick={this.capture}>Take picture</Button>
+        <div class="webcam">
+          <Webcam key={this.props.deviceId} audioSource="" videoSource={this.state.deviceId} audio={false} ref={webcam => { if (webcam) this.webcam = webcam; }} screenshotFormat="image/jpeg" />
+        </div>
+        <div class="footer">
+          <div class="camera-buttons">
+            <Fab ripple={true} onclick={this.capture}><Fab.Icon>camera</Fab.Icon></Fab>
+          </div>
+        </div>
       </div>
     );
   }

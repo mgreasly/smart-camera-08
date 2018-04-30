@@ -1,12 +1,13 @@
 import { Component } from 'preact';
 import { route } from 'preact-router';
-import Drawer from 'preact-material-components/Drawer';
-import List from 'preact-material-components/List';
-import Toolbar from 'preact-material-components/Toolbar';
-import 'preact-material-components/Drawer/style.css';
-import 'preact-material-components/List/style.css';
-import 'preact-material-components/Theme/style.css';
-import 'preact-material-components/Toolbar/style.css';
+import Drawer from 'preact-material-components-mgr/Drawer';
+import Icon from 'preact-material-components-mgr/Icon';
+import List from 'preact-material-components-mgr/List';
+import Toolbar from 'preact-material-components-mgr/Toolbar';
+import 'preact-material-components-mgr/Drawer/style.css';
+import 'preact-material-components-mgr/List/style.css';
+import 'preact-material-components-mgr/Theme/style.css';
+import 'preact-material-components-mgr/Toolbar/style.css';
 
 export default class Header extends Component {
     closeDrawer = () => { this.drawer.MDComponent.open = false; }
@@ -31,9 +32,9 @@ export default class Header extends Component {
                     <Drawer.DrawerHeader>AvaGo Smart Camera</Drawer.DrawerHeader>
 					<Drawer.DrawerContent>
 						<List>
-							<List.LinkItem onClick={this.linkTo('/')}>Home</List.LinkItem>
-							<List.LinkItem onClick={this.linkTo('/camera')}>Camera</List.LinkItem>
-							<List.LinkItem onClick={this.linkTo('/list')}>List</List.LinkItem>
+							<List.LinkItem onClick={this.linkTo('/')}><Icon>home</Icon> Home</List.LinkItem>
+							<List.LinkItem onClick={this.linkTo('/camera')}><Icon>camera_alt</Icon> Camera</List.LinkItem>
+							<List.LinkItem onClick={this.linkTo('/list')}><Icon>shopping_basket</Icon> List</List.LinkItem>
 						</List>
 					</Drawer.DrawerContent>				
                 </Drawer.TemporaryDrawer>

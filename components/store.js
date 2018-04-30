@@ -17,14 +17,23 @@ const actions = ({ setState }) => ({
             }
         )
         .then(response => {
+            var product = {
+                name: response.data.responses[0].logoAnnotations[0].description,
+                description: '',
+                price: ''
+            };
             var results = state.results.concat([{
                 image: value,
-                logo: response.data.responses[0].logoAnnotations
-            }])
+                product: product
+            }]);
             return { results: results }
         })
         .catch(error => {
-            return { results: state.results }
+            var results = state.results.concat([{
+                image: value,
+                product: { name: 'unidentified', description: '', price: '' }
+            }]);
+            return { results: results }
         })
     }
 });
