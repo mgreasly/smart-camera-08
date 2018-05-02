@@ -7,9 +7,11 @@ class ListPage extends Component {
         return (
             <div class="results">
                 <h1>Results...</h1>
-                {this.props.results && this.props.results.map(function(result, index) {
+                {this.props.loadingResults && <div>loading...</div>}
+                {this.props.results.map(function(result, index) {
                     return <div>
                         <img width="300" src={result.image} />
+                        {!result.product && <p>Unrecognised</p>}
                         {result.product && 
                         <p>
                             {result.product.name}<br />
